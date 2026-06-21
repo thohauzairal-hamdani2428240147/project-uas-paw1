@@ -44,7 +44,8 @@ class PembayaranController extends Controller
         })->count();
 
         // Auto-generate next code
-        $nextNumber = Pembayaran::count() + 1;
+        $lastCode = Pembayaran::max('KdPembayaran');
+        $nextNumber = $lastCode ? (int)substr($lastCode, 1) + 1 : 1;
         $nextCode = 'P' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
 
         return view('pembayaran.index', compact(

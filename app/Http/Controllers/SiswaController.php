@@ -31,7 +31,8 @@ class SiswaController extends Controller
         $kelas = Kelas::all();
         
         // Auto-generate next OT code for view convenience
-        $nextOtNumber = OrangTua::count() + 1;
+        $lastOtCode = OrangTua::max('KdOrangTua');
+        $nextOtNumber = $lastOtCode ? (int)substr($lastOtCode, 2) + 1 : 1;
         $nextOtCode = 'OT' . str_pad($nextOtNumber, 4, '0', STR_PAD_LEFT);
 
         return view('siswa.index', compact('siswa', 'kelas', 'nextOtCode'));
