@@ -33,6 +33,24 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        User::updateOrCreate(
+            ['email' => 'kepsek@sekolah.sch.id'],
+            [
+                'name' => 'Kepala Sekolah',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'bendahara@sekolah.sch.id'],
+            [
+                'name' => 'Bendahara Sekolah',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+            ]
+        );
+
         // Disable Foreign Key checks for seeding
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
