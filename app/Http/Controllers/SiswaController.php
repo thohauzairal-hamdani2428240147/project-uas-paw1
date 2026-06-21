@@ -74,6 +74,16 @@ class SiswaController extends Controller
             'NamaAyah' => 'nullable|string|max:60',
             'PekerjaanAyah' => 'nullable|string|max:30',
             'AlamatAyah' => 'nullable|string|max:255',
+        ], [
+            'NISN.unique' => 'NISN tersebut sudah terdaftar di sistem. Silakan gunakan NISN siswa lainnya.',
+            'NISN.size' => 'NISN harus terdiri dari tepat 10 digit angka.',
+            'NISN.required' => 'NISN wajib diisi.',
+            'TahunLulusSMP.size' => 'Tahun lulus SMP harus terdiri dari 4 digit angka.',
+        ], [
+            'NISN' => 'NISN',
+            'Nama' => 'Nama Siswa',
+            'JenisKelamin' => 'Jenis Kelamin',
+            'TahunLulusSMP' => 'Tahun Lulus SMP',
         ]);
 
         // 1. Create or Find Parent info
